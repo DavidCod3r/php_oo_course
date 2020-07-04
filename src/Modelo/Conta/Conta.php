@@ -2,7 +2,7 @@
 
 namespace src\Banco\Modelo\Conta;
 
-class Conta
+abstract class Conta
 {
     private Titular $titular;
     private float $saldo;
@@ -33,10 +33,12 @@ class Conta
 
     public function saca(float $valorSacar): void
     {
-        if ($valorSacar > $this->saldo) {
+        $tarifaSaque = $valorSacar * $this->percentualTarifa();
+        $valorSaque = $valorSacar + $tarifaSaque;
+        if ($valorSaque > $this->saldo) {
             echo "Saldo insuficiente" . PHP_EOL;
         } else {
-            $this->saldo -= $valorSacar;
+            $this->saldo -= $valorSaque;
         }
     }
 
@@ -49,20 +51,11 @@ class Conta
         }
     }
 
-    public function transfere(Conta $contaDestino, float $valorTransferir): void
-    {
-        if ($valorTransferir > $this->saldo) {
-            echo "Saldo insuficiente" . PHP_EOL;
-        } else {
-            $this->saca($valorTransferir);
-            $contaDestino->deposita($valorTransferir);
-        }
-    }
-
     public static function recuperaNumeroDeContas() : int
     {
         return self::$numeroDeContas;
     }
 
+    abstract protected function percentualTarifa(): float;
 
 }
