@@ -1,8 +1,9 @@
 <?php
 
+namespace src\Banco\Modelo\Conta;
+
 class Conta
 {
-
     private Titular $titular;
     private float $saldo;
     private static $numeroDeContas = 0;

@@ -1,10 +1,11 @@
 <?php
 
-require_once 'src/Conta.php';
-require_once 'src/Endereco.php';
-require_once 'src/Titular.php';
-require_once 'src/CPF.php';
+use src\Banco\Modelo\Conta\Conta;
+use src\Banco\Modelo\Conta\Titular;
+use src\Banco\Modelo\CPF;
+use src\Banco\Modelo\Endereco;
 
+require_once 'autoload.php';
 
 $endereco = new Endereco('Petropolis', 'um bairro', 'minha rua', '71K');
 $fulano = new Titular(new CPF('123.456.789-11'), 'Fulano de tal', $endereco);
