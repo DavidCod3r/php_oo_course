@@ -2,7 +2,7 @@
 
 namespace src\Banco\Service;
 
-use src\Banco\Modelo\Funcionario;
+use src\Banco\Modelo\Funcionario\Funcionario;
 
 class ControladorDeBonificacoes
 {
