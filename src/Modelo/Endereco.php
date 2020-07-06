@@ -2,7 +2,7 @@
 
 namespace src\Banco\Modelo;
 
-class Endereco
+final class Endereco
 {
 
     private string $cidade;
@@ -39,7 +39,20 @@ class Endereco
         return $this->numero;
     }
 
+    public function __get($name)
+    {
+        return $this->$name;
+    }
 
+    public function __set($name, $value)
+    {
+        $this->$name = $value;
+    }
+
+    public function __toString(): string
+    {
+        return "{$this->rua}, {$this->numero}, {$this->bairro}, {$this->cidade}" . PHP_EOL;
+    }
     
 
 
